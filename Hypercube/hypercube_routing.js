@@ -17,6 +17,7 @@ Tracer.delay();
 
 class Node {
     /**
+     * Creates a new node
      * @param {string} label a m bit string that defines the identifier of the node
      */
     constructor(label) {
@@ -25,6 +26,7 @@ class Node {
     }
 
     /**
+     * Creates the neighborhood of the node
      * @param {{ [x: string]: Node; }} nodes
      */
     join(nodes) { // It's not a clean solution, but it's only a naive example
@@ -44,12 +46,16 @@ class Node {
     }
 
     /**
-     * @param {string} target
-     * @param {number} step
+     * Lookup/routing operation
+     * @param {string} target Id of the target node
+     * @param {number} step Routing step
      */
     lookup(target, step) {
         if(this.label === target) {
             // Completed
+            // log {
+            logTracer.println("Finished");
+            // }
             return;
         }
         for(let i = step; i < this.label.length; i++)
@@ -58,7 +64,6 @@ class Node {
                 Tracer.delay();
                 graphTracer.select(this.neighboors[i].label, this.label);
                 Tracer.delay();
-                
                 // }
                 return this.neighboors[i].lookup(target, i + 1);
             }
@@ -66,8 +71,9 @@ class Node {
 
 }
 
-class Graph {
+class Hypercube {
     /**
+     * Creates a new Hypercube with 2^dim nodes
      * @param {number} dim The Hypercube dimension
      */
     constructor(dim) {
@@ -76,7 +82,7 @@ class Graph {
         this.nodes = {};
         // Creating 2^dim nodes with label going from 0 to 2^dim - 1
         for(let i = 0; i < this.N; i++) { 
-            let label = Graph.getLabel(i, dim);
+            let label = Hypercube.getLabel(i, dim);
             this.nodes[label] = new Node(label);
             // add node to tracer {
             graphTracer.addNode(label);
@@ -84,14 +90,15 @@ class Graph {
         }
 
         for(let i = 0; i < this.N; i++) { 
-            let label = Graph.getLabel(i, dim);
+            let label = Hypercube.getLabel(i, dim);
             this.nodes[label].join(this.nodes);
         }
     }
 
     /**
-     * @param {number} i
-     * @param {number} dim
+     * Get the binary representation in binary (string of lenght dim) of the passed integer
+     * @param {number} i a non-negative integer
+     * @param {number} dim the hypercube dimension
      */
     static getLabel(i, dim) {
         let label = i.toString(2);
@@ -105,13 +112,16 @@ class Graph {
     
         
 (function main() {
-    const G = new Graph(4);
+    // Creates a new Hypercube
+    const G = new Hypercube(4);
+
+
     Tracer.delay();
     // first step {
     graphTracer.select('0000');
     Tracer.delay(1);
     // }
-    
+    // Starting routing
     G.nodes['0000'].lookup('1111', 0);
 })();
     
