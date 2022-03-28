@@ -9,7 +9,15 @@ An hypercube of dimension ***m*** is defined as follows:
      ![alt](resources/A-4-dimensional-hypercube-interconnection-network.png)
 
 ## Properties
-- Number of nodes: 2<sup>m</sup>
-- Number of edges: m * 2<sup>m-1</sup>
-- Bisection: 2<sup>m-1</sup> (Removes all links of a dimension)
-- Diameter: m = log (2<sup>m</sup>)
+- Number of nodes: **2<sup>m</sup>**
+- Number of edges:**m * 2<sup>m-1</sup>**
+- Bisection: **2<sup>m-1</sup>** (Removes all links of a dimension)
+- Diameter: **m = log 2<sup>m</sup>**
+
+## Routing
+The idea of the routing algorithm is very very simple. Because every node is connected to all the nodes with which it differ on one bit, what we can do is to "fix" a bit in each step and after at most **m** step the destination is reached.
+```
+for(i = 0; i < m; i++)
+    if(i-bit of source is different from i-bit of dest)
+        use the link of dimension i to fix it
+```
