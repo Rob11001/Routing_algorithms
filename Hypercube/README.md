@@ -10,7 +10,7 @@ An hypercube of dimension ***m*** is defined as follows:
 
 ## Properties
 - Number of nodes: **2<sup>m</sup>**
-- Number of edges:**m * 2<sup>m-1</sup>**
+- Number of edges: **m * 2<sup>m-1</sup>**
 - Bisection: **2<sup>m-1</sup>** (Removes all links of a dimension)
 - Diameter: **m = log 2<sup>m</sup>**
 
