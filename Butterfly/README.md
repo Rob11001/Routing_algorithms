@@ -8,7 +8,7 @@ A Butterfly of dimension ***m*** is defined as follows:
 
 Note: the crossed links operate like the hypercube links. Infact, the i-row of a buttefly simulates the i-node of the hypercube. So if we merge all the nodes of each row in one node, we obtain a hypercube of dimension m.
 
-![alt](resources/bf3.gif)
+![alt](resources/bf.png)
 ## Properties
 - Number of nodes: **(m + 1) * 2<sup>m</sup>**
 - Number of edges: **m * 2<sup>m + 1</sup>** (2 edges for each node except the nodes of the last level)
