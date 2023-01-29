@@ -4,7 +4,7 @@
 This project contains examples of routing algorithms implemented on specific network architectures using [algorithm-visualizer.org](https://algorithm-visualizer.org/). The purpose of this project is to demonstrate the visualization of different routing algorithms and to help understand their behavior in different network configurations.
 
 ## Usage
-You can simple copy the content of the javascript files and paste them on [algorithm-visualizer.org](https://algorithm-visualizer.org/) and then run it.
+You can simply copy the content of the javascript files and paste them on [algorithm-visualizer.org](https://algorithm-visualizer.org/) and then run it.
 
 ## Included Examples
 - Hypercube routing
